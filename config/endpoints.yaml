@@ -1,0 +1,16 @@
+# Defines endpoints per environment; auth optional.
+# name: logical name, url: target, selector: CSS to wait for
+# auth: type=bearer, token_env_var refers to CLIENT_TOKEN env var
+environments:
+  dev:
+    otel_collector_endpoint: "http://otel-collector.ghh.svc.cluster.local:4317"
+    endpoints:
+      - name: frontend-app
+        url: https://dev.example.com
+        success_selector: "#main-container"
+        auth:
+          type: bearer
+          token_env_var: DEV_UI_TOKEN
+      - name: public-site
+        url: https://dev.public.com
+        success_selector: "body"

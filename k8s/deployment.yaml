@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghh-ui-synthetic-prober
+  labels:
+    app: ghh-ui-prober
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ghh-ui-prober
+  template:
+    metadata:
+      labels:
+        app: ghh-ui-prober
+    spec:
+      containers:
+      - name: prober
+        image: ghh-ui-synthetic-prober:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: ghh-ui-synthetic-prober-config
+        - secretRef:
+            name: ghh-ui-synthetic-prober-secret
+        volumeMounts:
+        - name: logs
+          mountPath: /app/logs
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "200Mi"
+          limits:
+            cpu: "500m"
+            memory: "500Mi"
+      volumes:
+      - name: logs
+        emptyDir: {}

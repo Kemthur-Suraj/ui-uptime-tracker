@@ -1,0 +1,6 @@
+playwright==1.37.1
+PyYAML==6.0
+requests==2.31.0
+opentelemetry-sdk==1.24.0
+opentelemetry-exporter-otlp==1.24.0
+python-json-logger==2.0.7
