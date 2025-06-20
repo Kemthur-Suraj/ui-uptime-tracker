@@ -6,5 +6,5 @@ data:
   CLIENT_ID: "<your-client-id>"
   TOKEN_ENDPOINT: "https://auth.example.com/oauth2/token"
   SCOPES: "api.read ui.monitor"
-  ENV: "prod"
+  ENV: "dev"
   OTEL_COLLECTOR_ENDPOINT: "http://otel-collector.ghh.svc.cluster.local:4317"
